@@ -1,0 +1,545 @@
+:root {
+    --primary-color: #E65447;
+    --accent-color: #FFB578;
+    --bg-color: #FFF5F0;
+    --text-color: #4A2311;
+    --venue-color: #E65447;
+    --food-color: #FFB578;
+    --sightseeing-color: #FF8559;
+    --souvenir-color: #CF5376;
+    --card-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden;
+}
+
+header {
+    background: var(--primary-color);
+    color: white;
+    padding: 12px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1100;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    flex: 1;
+}
+
+.header-link {
+    background: var(--accent-color);
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.7rem;
+    padding: 8px 16px;
+    border-radius: 0;
+    font-weight: 800;
+    white-space: nowrap;
+    margin-left: 12px;
+    transition: all 0.3s;
+}
+
+.header-link:hover {
+    background: var(--sightseeing-color);
+    color: white;
+}
+
+#filter-container {
+    display: flex;
+    overflow-x: auto;
+    background: var(--bg-color);
+    padding: 12px 12px;
+    gap: 2px;
+    z-index: 1000;
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+#filter-container::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-btn {
+    background: var(--bg-color);
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 10px 18px;
+    border-radius: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #5d6d7e;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+#sub-filter-container {
+    display: flex;
+    overflow-x: auto;
+    background: #C4D8DB;
+    padding: 10px 16px;
+    gap: 10px;
+    z-index: 999;
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.02);
+}
+
+.sub-filter-btn {
+    background: var(--bg-color);
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 6px 14px;
+    border-radius: 0;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #5d6d7e;
+    transition: all 0.2s;
+}
+
+.sub-filter-btn.active {
+    color: white;
+}
+
+#map {
+    width: 100%;
+    height: calc(100vh - 165px);
+    z-index: 1;
+    background: #f8f9fa;
+}
+
+/* Leaflet クレジットの位置調整 */
+.leaflet-bottom.leaflet-right {
+    bottom: 10px !important;
+    transition: bottom 0.3s ease;
+}
+
+/* カルーセル */
+#carousel {
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    padding: 15px 20px 25px 20px;
+    gap: 16px;
+    z-index: 1000;
+    scroll-behavior: smooth;
+    pointer-events: none;
+}
+
+.card {
+    flex: 0 0 280px;
+    min-height: 180px;
+    background: var(--bg-color);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    pointer-events: auto;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 4px solid transparent;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.card.active {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    border-bottom-color: var(--primary-color);
+}
+
+.card-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-bottom {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 8px;
+}
+
+.card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.card-btn {
+    flex: 1;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 8px 4px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    border-radius: 4px;
+}
+
+.card-btn.btn-gmaps {
+    background: var(--primary-color);
+    color: white;
+}
+
+.card-btn.btn-web {
+    background: var(--bg-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.card-tag-container {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.card-category {
+    font-size: 0.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 0;
+    display: inline-block;
+    color: white;
+}
+
+.card-subcategory {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--text-color);
+    background: white;
+    padding: 2px 8px;
+    border: 1px solid var(--primary-color);
+    border-radius: 0;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.card-desc {
+    font-size: 0.75rem;
+    color: #636e72;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5;
+    min-height: 3em;
+}
+
+/* マーカーベース設定 */
+.custom-marker {
+    background: none;
+    border: none;
+}
+
+.marker-base {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 形状の定義 */
+.shape-circle {
+    border-radius: 50%;
+}
+
+.shape-square {
+    border-radius: 0;
+}
+
+.shape-diamond {
+    transform: rotate(45deg);
+    width: 12px; /* 回転による膨張を考慮して少し小さく */
+    height: 12px;
+}
+
+.shape-round-square {
+    border-radius: 4px;
+}
+
+/* アクティブ（選択中）の演出 */
+.marker-base.active {
+    width: 20px;
+    height: 20px;
+    border-width: 3px;
+    z-index: 1000 !important;
+    animation: marker-pulse 1.5s infinite; /* 点滅（パルス）アニメーションを追加 */
+}
+
+/* 菱形がアクティブな時の調整 */
+.shape-diamond.active {
+    width: 18px;
+    height: 18px;
+    animation: marker-pulse-diamond 1.5s infinite; /* 菱形専用のパルス */
+}
+
+@keyframes marker-pulse {
+    0% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 0 0 rgba(230, 84, 71, 0.7); }
+    50% { transform: scale(1.4); opacity: 0.8; box-shadow: 0 0 0 15px rgba(230, 84, 71, 0); }
+    100% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 0 0 rgba(230, 84, 71, 0); }
+}
+
+@keyframes marker-pulse-diamond {
+    0% { transform: rotate(45deg) scale(1.1); opacity: 1; box-shadow: 0 0 0 0 rgba(230, 84, 71, 0.7); }
+    50% { transform: rotate(45deg) scale(1.3); opacity: 0.8; box-shadow: 0 0 0 15px rgba(230, 84, 71, 0); }
+    100% { transform: rotate(45deg) scale(1.1); opacity: 1; box-shadow: 0 0 0 0 rgba(230, 84, 71, 0); }
+}
+
+.heart-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.2s;
+}
+
+.heart-btn:active {
+    transform: scale(1.3);
+}
+
+.heart-btn svg {
+    transition: fill 0.2s, transform 0.2s;
+}
+
+.filter-btn[data-category="favorites"].active {
+    background: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.locate-btn {
+    position: absolute;
+    top: 140px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    background: var(--bg-color);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.2s;
+}
+
+.locate-btn:active {
+    transform: scale(0.9);
+    background: #C4D8DB;
+}
+
+/* ランディングページ */
+#landing-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    transition: opacity 1.5s ease-in-out, visibility 1.5s;
+    overflow: hidden;
+}
+
+#landing-page.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: slideAnimation 72s infinite;
+}
+
+.slide:nth-child(1) { animation-delay: 0s; }
+.slide:nth-child(2) { animation-delay: 6s; }
+.slide:nth-child(3) { animation-delay: 12s; }
+.slide:nth-child(4) { animation-delay: 18s; }
+.slide:nth-child(5) { animation-delay: 24s; }
+.slide:nth-child(6) { animation-delay: 30s; }
+.slide:nth-child(7) { animation-delay: 36s; }
+.slide:nth-child(8) { animation-delay: 42s; }
+.slide:nth-child(9) { animation-delay: 48s; }
+.slide:nth-child(10) { animation-delay: 54s; }
+.slide:nth-child(11) { animation-delay: 60s; }
+.slide:nth-child(12) { animation-delay: 66s; }
+
+@keyframes slideAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    2% {
+        opacity: 1;
+    }
+    6.3% {
+        opacity: 1;
+    }
+    8.3% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.landing-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 20px rgba(0,0,0,0.5);
+    padding: 20px;
+}
+
+.landing-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s forwards 0.5s;
+}
+
+.landing-subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s forwards 1s;
+}
+
+.landing-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s forwards 1.5s;
+}
+
+.enter-btn, .register-btn {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 12px 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0;
+}
+
+.enter-btn:hover, .register-btn:hover {
+    background: white;
+    color: #1a2a3a;
+}
+
+.register-btn {
+    background: #FFB578;
+    border-color: #FFB578;
+    color: #4A2311;
+    font-weight: 800;
+}
+
+.register-btn:hover {
+    background: #FF8559;
+    border-color: #FF8559;
+    color: white;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.landing-footer {
+    position: absolute;
+    bottom: 12px;
+    right: 20px;
+    text-align: right;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.5);
+    z-index: 2;
+    letter-spacing: 0.02em;
+}
+
+.landing-footer a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
