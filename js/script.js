@@ -170,7 +170,6 @@ function displaySpots(catFilter = 'all', subCatFilter = 'all') {
             card.onclick = (e) => {
                 // ボタンクリック時は発火させない
                 if (e.target.tagName === 'A') return;
-                map.panTo([spot.lat, spot.lng]);
                 focusSpot(spot.id);
             };
             carousel.appendChild(card);
@@ -180,15 +179,18 @@ function displaySpots(catFilter = 'all', subCatFilter = 'all') {
 
 function renderSubFilters(cat) {
     const container = document.getElementById('sub-filter-container');
+    const locateBtn = document.querySelector('.locate-btn');
     const configs = subCategoryConfigs[cat];
 
     if (!configs) {
         container.classList.add('hidden');
         container.innerHTML = '';
+        if (locateBtn) locateBtn.classList.remove('shifted');
         return;
     }
 
     container.classList.remove('hidden');
+    if (locateBtn) locateBtn.classList.add('shifted');
     container.innerHTML = '';
     
     configs.forEach(sub => {
@@ -233,11 +235,14 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 });
 
 function focusSpot(id) {
+    const spot = spots.find(s => s.id == id);
+    if (!spot) return;
+
     // 全カードとマーカーをリセット
     document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
     Object.keys(markers).forEach(k => {
-        const spot = spots.find(s => s.id == k);
-        markers[k].setIcon(createIcon(spot.category, k == id));
+        const s = spots.find(sp => sp.id == k);
+        markers[k].setIcon(createIcon(s.category, k == id));
         if (k == id) markers[k].setZIndexOffset(1000);
         else markers[k].setZIndexOffset(0);
     });
@@ -248,6 +253,16 @@ function focusSpot(id) {
         card.classList.add('active');
         card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
+
+    // 地図の移動（カルーセルを避けて中央に配置）
+    const carousel = document.getElementById('carousel');
+    const carouselHeight = carousel.offsetHeight || 200; // カルーセルの高さを取得
+    
+    // カルーセルの高さの半分だけ中心を下にずらす計算
+    // これにより、マーカーが「地図の最上部」と「カルーセルの上端」の中間に表示される
+    const targetPoint = map.project([spot.lat, spot.lng], map.getZoom()).add([0, carouselHeight / 2]);
+    const targetLatLng = map.unproject(targetPoint, map.getZoom());
+    map.setView(targetLatLng, map.getZoom(), { animate: true });
 }
 
 function locateUser() {

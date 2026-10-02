@@ -148,11 +148,16 @@ header h1 {
     width: 100%;
     display: flex;
     overflow-x: auto;
-    padding: 15px 20px 25px 20px;
+    padding: 15px 0 25px 0; /* 左右のパディングを0にする */
     gap: 16px;
     z-index: 1000;
     scroll-behavior: smooth;
     pointer-events: none;
+    scroll-snap-type: x mandatory;
+}
+
+#carousel::-webkit-scrollbar {
+    display: none;
 }
 
 .card {
@@ -168,6 +173,18 @@ header h1 {
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    scroll-snap-align: center;
+}
+
+/* 最初と最後のカードに画面中央に寄せるための余白を追加 */
+.card:first-child {
+    margin-left: calc(50% - 140px);
+}
+
+.card:last-child {
+    margin-right: calc(50% - 140px);
+}
+
 }
 
 .card.active {
@@ -364,7 +381,11 @@ header h1 {
     z-index: 1000;
     cursor: pointer;
     border: 1px solid rgba(0,0,0,0.05);
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.locate-btn.shifted {
+    top: 195px; /* サブカテゴリが表示されている時に下にずらす */
 }
 
 .locate-btn:active {
