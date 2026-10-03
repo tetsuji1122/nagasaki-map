@@ -109,6 +109,50 @@
  },
  {
   "id": 11,
+  "name": "中華 大八 浜口店",
+  "category": "food",
+  "subcategory": "champon",
+  "lat": 32.769184,
+  "lng": 129.865616,
+  "desc": "大学病院近く。ピンクのかまぼこや野菜が彩る、アサリや牡蠣の旨みがたっぷりの大盛ちゃんぽん。行列ができるほど人気のお店です。",
+  "url": "https://tabelog.com/nagasaki/A4201/A420101/42011265/",
+  "address": "長崎県長崎市浜口町8-11"
+ },
+ {
+  "id": 12,
+  "name": "永楽苑",
+  "category": "food",
+  "subcategory": "champon",
+  "lat": 32.745281,
+  "lng": 129.872604,
+  "desc": "中華激戦区・長崎で愛される『永楽苑』。肉厚しいたけと野菜の旨味が溶け込んだ熱々白湯スープと細ちぢれ麺が絶品の「しいたけ肉そば」は見逃せません！",
+  "url": "https://tabelog.com/nagasaki/A4201/A420101/42000813/",
+  "address": "長崎県長崎市江戸町1-8"
+ },
+ {
+  "id": 13,
+  "name": "江戸びし",
+  "category": "food",
+  "subcategory": "champon",
+  "lat": 32.745472,
+  "lng": 129.872673,
+  "desc": "長崎の老舗町中華「江戸びし」は、魚介や野菜の旨味が溶け込んだ優しく味わい深いちゃんぽんや皿うどん、ボリューム満点のセットが評判の人気店です。",
+  "url": "https://tabelog.com/nagasaki/A4201/A420101/42004411/",
+  "address": "長崎県長崎市江戸町1-6"
+ },
+ {
+  "id": 14,
+  "name": "よこはま 思案橋店",
+  "category": "food",
+  "subcategory": "champon",
+  "lat": 32.742694,
+  "lng": 129.879197,
+  "desc": "長崎の思案橋横丁にある老舗「中華料理よこはま」は、魚介や野菜の旨味が溶け込んだ優しい味わいのちゃんぽんや皿うどんが評判の人気店です。",
+  "url": "https://tabelog.com/nagasaki/A4201/A420101/42000331/",
+  "address": "長崎県長崎市本石灰町2-20"
+ },
+ {
+  "id": 15,
   "name": "老李",
   "category": "food",
   "subcategory": "champon",
@@ -119,7 +163,7 @@
   "address": "長崎県長崎市新地町12-7 "
  },
  {
-  "id": 12,
+  "id": 16,
   "name": "満福",
   "category": "food",
   "subcategory": "champon",
@@ -130,7 +174,7 @@
   "address": "長崎県長崎市本石灰町5-1"
  },
  {
-  "id": 13,
+  "id": 17,
   "name": "三八ラーメン 銅座店",
   "category": "food",
   "subcategory": "champon",
@@ -141,7 +185,7 @@
   "address": "長崎県長崎市銅座町14-11"
  },
  {
-  "id": 14,
+  "id": 18,
   "name": "思案橋ラーメン",
   "category": "food",
   "subcategory": "champon",
@@ -152,7 +196,7 @@
   "address": "長崎県長崎市浜町6-17"
  },
  {
-  "id": 15,
+  "id": 19,
   "name": "王鶴",
   "category": "food",
   "subcategory": "champon",
@@ -163,7 +207,7 @@
   "address": "長崎県長崎市新地町12-3"
  },
  {
-  "id": 16,
+  "id": 20,
   "name": "ツル茶ん",
   "category": "food",
   "subcategory": "turkish",
@@ -174,7 +218,7 @@
   "address": "長崎県長崎市油屋町2-47"
  },
  {
-  "id": 17,
+  "id": 21,
   "name": "ニッキー・アースティン 長崎駅前店",
   "category": "food",
   "subcategory": "turkish",
@@ -185,7 +229,18 @@
   "address": "長崎県長崎市尾上町1-67 長崎街道かもめ市場"
  },
  {
-  "id": 18,
+  "id": 22,
+  "name": "ニッキー・アースティン 万屋町店",
+  "category": "food",
+  "subcategory": "turkish",
+  "lat": 32.745211,
+  "lng": 129.878959,
+  "desc": "長崎の有名老舗「ニッキー・アースティン」は、100種類以上もの多彩なトルコライスが揃う人気店です。ボリューム満点で美味しいワンプレート洋食を堪能できます。",
+  "url": "https://tabelog.com/nagasaki/A4201/A420101/42011607/",
+  "address": "長崎県長崎市万屋町4-11"
+ },
+ {
+  "id": 23,
   "name": "ビストロ ボルドー",
   "category": "food",
   "subcategory": "turkish",
@@ -196,7 +251,7 @@
   "address": "長崎県長崎市浜町8-28"
  },
  {
-  "id": 19,
+  "id": 24,
   "name": "プリムローズ",
   "category": "food",
   "subcategory": "turkish",
@@ -207,7 +262,7 @@
   "address": "長崎県長崎市古川町3-3 若喜屋ビル2F"
  },
  {
-  "id": 20,
+  "id": 25,
   "name": "レッケル",
   "category": "food",
   "subcategory": "turkish",
@@ -218,7 +273,7 @@
   "address": "長崎県長崎市松が枝町3-7"
  },
  {
-  "id": 21,
+  "id": 26,
   "name": "カフェ・オリンピック",
   "category": "food",
   "subcategory": "turkish",
@@ -229,7 +284,18 @@
   "address": "長崎県長崎市浜町8-13 2F"
  },
  {
-  "id": 22,
+  "id": 27,
+  "name": "シシリア",
+  "category": "food",
+  "subcategory": "turkish",
+  "lat": 32.744823,
+  "lng": 129.880462,
+  "desc": "長崎の老舗洋食店「シシリア」は、チーズとトマトソースが絶妙な名物「マリンライス」が評判の人気店です。アンティーク調の落ち着いた空間で熱々の絶品ドリアを堪能できます。",
+  "url": "https://tabelog.com/nagasaki/A4201/A420101/42000946/",
+  "address": "長崎県長崎市万屋町6-17"
+ },
+ {
+  "id": 28,
   "name": "冨士男",
   "category": "food",
   "subcategory": "cafe",
@@ -240,7 +306,7 @@
   "address": "長崎県長崎市鍛冶屋町2-12"
  },
  {
-  "id": 23,
+  "id": 29,
   "name": "絵里奈",
   "category": "food",
   "subcategory": "cafe",
@@ -251,7 +317,7 @@
   "address": "長崎県長崎市出島町4-12"
  },
  {
-  "id": 24,
+  "id": 30,
   "name": "純喫茶「冨士」",
   "category": "food",
   "subcategory": "cafe",
@@ -262,7 +328,7 @@
   "address": "長崎県長崎市新大工町2-19"
  },
  {
-  "id": 25,
+  "id": 31,
   "name": "南蛮茶屋",
   "category": "food",
   "subcategory": "cafe",
@@ -273,7 +339,7 @@
   "address": "長崎県長崎市古川町5-9"
  },
  {
-  "id": 26,
+  "id": 32,
   "name": "吉宗（よっそう）",
   "category": "food",
   "lat": 32.744489,
@@ -283,7 +349,7 @@
   "address": "長崎県長崎市浜町8-9"
  },
  {
-  "id": 27,
+  "id": 33,
   "name": "魚たつ",
   "category": "food",
   "lat": 32.745319,
@@ -293,7 +359,7 @@
   "address": "長崎県長崎市江戸町1-8 "
  },
  {
-  "id": 28,
+  "id": 34,
   "name": "多ら福　亜紗",
   "category": "food",
   "lat": 32.743622,
@@ -303,7 +369,7 @@
   "address": "長崎県\t長崎市油屋町2-6"
  },
  {
-  "id": 29,
+  "id": 35,
   "name": "一二三亭",
   "category": "food",
   "lat": 32.742728,
@@ -313,7 +379,7 @@
   "address": "長崎県長崎市本石灰町2-19"
  },
  {
-  "id": 30,
+  "id": 36,
   "name": "まるよし",
   "category": "food",
   "lat": "32.743208\t",
@@ -323,7 +389,7 @@
   "address": "長崎県長崎市浜町6-12"
  },
  {
-  "id": 31,
+  "id": 37,
   "name": "海鮮市場 長崎港　出島ワーフ本店",
   "category": "food",
   "lat": 32.744823,
@@ -333,7 +399,7 @@
   "address": "長崎県長崎市出島町1-1"
  },
  {
-  "id": 32,
+  "id": 38,
   "name": "オランダ坂",
   "category": "sightseeing",
   "lat": 32.738052,
@@ -343,7 +409,7 @@
   "address": "長崎県長崎市東山手町"
  },
  {
-  "id": 33,
+  "id": 39,
   "name": "グラバー園",
   "category": "sightseeing",
   "lat": 32.734517,
@@ -353,7 +419,7 @@
   "address": "長崎県長崎市南山手町8-1"
  },
  {
-  "id": 34,
+  "id": 40,
   "name": "長崎新地中華街",
   "category": "sightseeing",
   "lat": 32.741457,
@@ -363,7 +429,7 @@
   "address": "長崎県長崎市新地町10-13"
  },
  {
-  "id": 35,
+  "id": 41,
   "name": "平和公園",
   "category": "sightseeing",
   "lat": 32.775562,
@@ -373,7 +439,7 @@
   "address": "長崎県長崎市松山町9"
  },
  {
-  "id": 36,
+  "id": 42,
   "name": "原爆資料館",
   "category": "sightseeing",
   "lat": 32.772224,
@@ -383,17 +449,17 @@
   "address": "長崎県長崎市平野町7-8"
  },
  {
-  "id": 37,
+  "id": 43,
   "name": "端島（軍艦島） ",
   "category": "sightseeing",
   "lat": 32.628237,
-  "lng": 129.737960,
+  "lng": 129.73796,
   "desc": "高層ビルが立ち並ぶ外観から「軍艦島」と呼ばれる海底炭坑の島。日本の近代化を支え、現在は世界文化遺産に登録されています。",
   "url": "https://www.nagasaki-tabinet.com/guide/51797",
   "address": "長崎県長崎市高島町端島"
  },
  {
-  "id": 38,
+  "id": 44,
   "name": "眼鏡橋",
   "category": "sightseeing",
   "lat": 32.747196,
@@ -403,7 +469,7 @@
   "address": "長崎県長崎市魚の町"
  },
  {
-  "id": 39,
+  "id": 45,
   "name": "大浦天主堂",
   "category": "sightseeing",
   "lat": 32.734657,
@@ -413,7 +479,7 @@
   "address": "長崎県長崎市南山手町5-3"
  },
  {
-  "id": 40,
+  "id": 46,
   "name": "カトリック中町教会",
   "category": "sightseeing",
   "lat": 32.751637,
@@ -423,7 +489,7 @@
   "address": "長崎県長崎市中町1-13"
  },
  {
-  "id": 41,
+  "id": 47,
   "name": "浦上天主堂",
   "category": "sightseeing",
   "lat": 32.775959,
@@ -433,7 +499,7 @@
   "address": "長崎県長崎市本尾町1-79"
  },
  {
-  "id": 42,
+  "id": 48,
   "name": "稲佐山展望台",
   "category": "sightseeing",
   "lat": 32.753247,
@@ -443,7 +509,7 @@
   "address": "長崎県長崎市稲佐町364"
  },
  {
-  "id": 43,
+  "id": 49,
   "name": "長崎ロープウェイ",
   "category": "sightseeing",
   "lat": 32.758018,
@@ -453,7 +519,7 @@
   "address": "長崎県長崎市稲佐町364-1"
  },
  {
-  "id": 44,
+  "id": 50,
   "name": "鍋冠山公園 （なべかんむりやまこうえん）",
   "category": "sightseeing",
   "lat": 32.728696,
@@ -463,7 +529,7 @@
   "address": "長崎県長崎市出雲2"
  },
  {
-  "id": 45,
+  "id": 51,
   "name": "出島",
   "category": "sightseeing",
   "lat": 32.743647,
@@ -473,7 +539,7 @@
   "address": "長崎県長崎市出島町6-1"
  },
  {
-  "id": 46,
+  "id": 52,
   "name": "浜町アーケード （はまんまちアーケード）",
   "category": "sightseeing",
   "lat": 32.744271,
@@ -483,7 +549,7 @@
   "address": "長崎県長崎市浜町"
  },
  {
-  "id": 47,
+  "id": 53,
   "name": "出島ワーフ",
   "category": "sightseeing",
   "lat": 32.744055,
@@ -493,7 +559,7 @@
   "address": "長崎県長崎市出島町1-1"
  },
  {
-  "id": 48,
+  "id": 54,
   "name": "長崎県美術館",
   "category": "sightseeing",
   "lat": 32.741953,
@@ -503,7 +569,7 @@
   "address": "長崎県長崎市出島町2-1"
  },
  {
-  "id": 49,
+  "id": 55,
   "name": "長崎歴史文化博物館",
   "category": "sightseeing",
   "lat": 32.752026,
@@ -513,7 +579,7 @@
   "address": "長崎県長崎市立山1-1-1"
  },
  {
-  "id": 50,
+  "id": 56,
   "name": "唐人屋敷跡 （とうじんやしきあと）",
   "category": "sightseeing",
   "lat": 32.738842,
@@ -523,7 +589,7 @@
   "address": "長崎県長崎市館内町"
  },
  {
-  "id": 51,
+  "id": 57,
   "name": "シーボルト記念館",
   "category": "sightseeing",
   "lat": 32.75565,
@@ -533,7 +599,7 @@
   "address": "長崎県長崎市鳴滝2-7-40"
  },
  {
-  "id": 52,
+  "id": 58,
   "name": "ペンギン水族館",
   "category": "sightseeing",
   "lat": 32.758492,
@@ -543,7 +609,7 @@
   "address": "長崎県長崎市宿町3-16"
  },
  {
-  "id": 53,
+  "id": 59,
   "name": "東明山 興福寺 （とうめいざん　こうふくじ）",
   "category": "sightseeing",
   "lat": 32.748423,
@@ -553,7 +619,7 @@
   "address": "長崎県長崎市寺町4-32"
  },
  {
-  "id": 54,
+  "id": 60,
   "name": "孔子廟・中国歴代博物館",
   "category": "sightseeing",
   "lat": 32.735813,
@@ -563,7 +629,7 @@
   "address": "長崎県長崎市大浦町10-36"
  },
  {
-  "id": 55,
+  "id": 61,
   "name": "一本柱鳥居（山王神社）",
   "category": "sightseeing",
   "lat": 32.767448,
@@ -573,7 +639,7 @@
   "address": "長崎県長崎市坂本2-6-56"
  },
  {
-  "id": 56,
+  "id": 62,
   "name": "諏訪神社",
   "category": "sightseeing",
   "lat": 32.753712,
@@ -583,7 +649,7 @@
   "address": "長崎県長崎市上西山町18-15"
  },
  {
-  "id": 57,
+  "id": 63,
   "name": "崇福寺 （そうふくじ）",
   "category": "sightseeing",
   "lat": 32.742706,
@@ -593,7 +659,7 @@
   "address": "長崎県長崎市鍛冶屋町7-5"
  },
  {
-  "id": 58,
+  "id": 64,
   "name": "万寿山　聖福寺 （まんじゅさん　しょうふくじ）",
   "category": "sightseeing",
   "lat": 32.752422,
@@ -603,7 +669,7 @@
   "address": "長崎県長崎市玉園町3-77"
  },
  {
-  "id": 59,
+  "id": 65,
   "name": "東山手甲十三番館",
   "category": "sightseeing",
   "lat": 32.738316,
@@ -613,7 +679,7 @@
   "address": "長崎県長崎市東山手町3-1"
  },
  {
-  "id": 60,
+  "id": 66,
   "name": "日本二十六聖人記念館",
   "category": "sightseeing",
   "lat": 32.754547,
@@ -623,7 +689,7 @@
   "address": "長崎県長崎市西坂町7-8"
  },
  {
-  "id": 61,
+  "id": 67,
   "name": "長崎市亀山社中記念館",
   "category": "sightseeing",
   "lat": 32.748768,
@@ -633,7 +699,7 @@
   "address": "長崎県長崎市伊良林2-7-24"
  },
  {
-  "id": 62,
+  "id": 68,
   "name": "福砂屋 長崎本店",
   "category": "souvenir",
   "subcategory": "castella",
@@ -644,7 +710,7 @@
   "address": "長崎県長崎市船大工町3-1"
  },
  {
-  "id": 63,
+  "id": 69,
   "name": "文明堂総本店",
   "category": "souvenir",
   "subcategory": "castella",
@@ -655,7 +721,7 @@
   "address": "長崎県長崎市江戸町1-1"
  },
  {
-  "id": 64,
+  "id": 70,
   "name": "松翁軒 本店",
   "category": "souvenir",
   "subcategory": "castella",
@@ -666,7 +732,7 @@
   "address": "長崎県長崎市魚の町3-19"
  },
  {
-  "id": 65,
+  "id": 71,
   "name": "匠寛堂",
   "category": "souvenir",
   "subcategory": "castella",
@@ -677,7 +743,7 @@
   "address": "長崎県長崎市魚の町7-24"
  },
  {
-  "id": 66,
+  "id": 72,
   "name": "和泉屋 本店",
   "category": "souvenir",
   "subcategory": "castella",
@@ -688,7 +754,7 @@
   "address": "長崎県長崎市万屋町4-16"
  },
  {
-  "id": 67,
+  "id": 73,
   "name": "岩崎本舗 西浜町店",
   "category": "souvenir",
   "subcategory": "kakuni",
@@ -699,7 +765,7 @@
   "address": "長崎県長崎市銅座町3-17"
  },
  {
-  "id": 68,
+  "id": 74,
   "name": "桃太呂 浜町店",
   "category": "souvenir",
   "subcategory": "kakuni",
@@ -710,7 +776,7 @@
   "address": "長崎県長崎市浜町10-19"
  },
  {
-  "id": 69,
+  "id": 75,
   "name": "梅月堂 本店",
   "category": "souvenir",
   "subcategory": "sweets",
@@ -721,7 +787,7 @@
   "address": "長崎県長崎市浜町 7-3"
  },
  {
-  "id": 70,
+  "id": 76,
   "name": "白水堂 思案橋本店",
   "category": "souvenir",
   "subcategory": "sweets",
@@ -732,7 +798,7 @@
   "address": "長崎県長崎市油屋町1-3"
  },
  {
-  "id": 71,
+  "id": 77,
   "name": "茂木一〇香本家（長崎浜屋内）",
   "category": "souvenir",
   "subcategory": "sweets",
@@ -742,4 +808,4 @@
   "url": "https://biwajelly.co.jp/",
   "address": "長崎県長崎市浜町7-10"
  }
-]
+ ]
