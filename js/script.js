@@ -12,6 +12,7 @@ const subCategoryConfigs = {
         { id: 'champon', label: 'ちゃんぽん' },
         { id: 'cafe', label: 'レトロ喫茶' },
         { id: 'turkish', label: 'トルコライス' },
+        { id: 'ramen', label: 'ラーメン' },
         { id: 'others', label: 'その他' }
     ],
     souvenir: [
@@ -158,7 +159,7 @@ function displaySpots(catFilter = 'all', subCatFilter = 'all') {
                     <div class="card-bottom">
                         <button class="heart-btn ${isFavorite ? 'active' : ''}" data-id="${spot.id}" onclick="toggleFavorite(${spot.id}, event)">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="${heartColor}" stroke="#e74c3c" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.84-8.84 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                             </svg>
                         </button>
                     </div>
