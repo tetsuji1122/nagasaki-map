@@ -1,26 +1,91 @@
 const categoryConfig = {
-    venue: { label: '会場', color: '#E65447', shape: 'shape-square' },
-    food: { label: 'グルメ', color: '#FFB578', shape: 'shape-circle' },
-    sightseeing: { label: '観光', color: '#FF8559', shape: 'shape-diamond' },
-    souvenir: { label: 'お土産', color: '#CF5376', shape: 'shape-round-square' },
+    venue: { label: '会場', color: '#E65447', icon: 'fa-solid fa-location-dot' },
+    food: { label: 'グルメ', color: '#f97316', icon: 'fa-solid fa-utensils' },
+    sightseeing: { label: '観光', color: '#FF8559', icon: 'fa-solid fa-camera' },
+    souvenir: { label: 'お土産', color: '#CF5376', icon: 'fa-solid fa-gift' },
     all: { label: 'すべて', color: '#1a2a3a' }
 };
+
+function getSpotConfig(spot) {
+    const cat = spot.category;
+    const subId = spot.subcategory || '';
+    const name = spot.name || '';
+    const desc = spot.desc || '';
+    
+    // 1. subCategoryConfigs から設定を探す
+    const config = subCategoryConfigs[cat]?.find(s => s.id === subId);
+    
+    if (config && config.id !== 'all') {
+        return { icon: config.icon, color: config.color };
+    }
+
+    // 2. 設定が見つからない場合のデフォルト（categoryConfig）
+    let icon = categoryConfig[cat]?.icon || 'fa-solid fa-location-dot';
+    let color = categoryConfig[cat]?.color || '#777';
+
+    // 3. キーワードによるフォールバック（既存の挙動を維持しつつ補完）
+    if (cat === 'food') {
+        if (name.includes('ちゃんぽん')) icon = 'fa-solid fa-bowl-food';
+    } else if (cat === 'souvenir') {
+        if (name.includes('カステラ')) {
+            icon = 'fa-solid fa-cake-candles';
+            color = '#eab308';
+        }
+    } else if (cat === 'sightseeing') {
+        if (name.includes('平和') || name.includes('原爆') || desc.includes('平和')) {
+            icon = 'fa-solid fa-dove';
+            color = '#3b82f6';
+        }
+        else if (name.includes('天主堂') || name.includes('教会') || name.includes('堂')) {
+            icon = 'fa-solid fa-church';
+            color = '#7e22ce';
+        }
+        else if (name.includes('龍馬') || name.includes('史跡') || name.includes('奉行所') || name.includes('出島')) {
+            icon = 'fa-solid fa-scroll';
+            color = '#92400e';
+        }
+        else if (name.includes('中華街') || name.includes('孔子廟')) {
+            icon = 'fa-solid fa-fire-flame-curved';
+            color = '#ef4444';
+        }
+        else if (name.includes('夜景') || name.includes('展望') || name.includes('稲佐山')) {
+            icon = 'fa-solid fa-mountain-city';
+            color = '#1e1b4b';
+        }
+        else if (name.includes('港') || name.includes('海') || name.includes('船') || name.includes('水辺')) {
+            icon = 'fa-solid fa-anchor';
+            color = '#06b6d4';
+        }
+    }
+
+    return { icon, color };
+}
 
 const subCategoryConfigs = {
     food: [
         { id: 'all', label: 'すべて' },
-        { id: 'champon', label: 'ちゃんぽん' },
-        { id: 'cafe', label: 'レトロ喫茶' },
-        { id: 'turkish', label: 'トルコライス' },
-        { id: 'ramen', label: 'ラーメン' },
-        { id: 'others', label: 'その他' }
+        { id: 'champon', label: 'ちゃんぽん', icon: 'fa-solid fa-bowl-food', color: '#f97316' },
+        { id: 'cafe', label: 'レトロ喫茶', icon: 'fa-solid fa-mug-hot', color: '#f97316' },
+        { id: 'turkish', label: 'トルコライス', icon: 'fa-solid fa-utensils', color: '#f97316' },
+        { id: 'ramen', label: 'ラーメン', icon: 'fa-solid fa-bowl-rice', color: '#f97316' },
+        { id: 'others', label: 'その他', icon: 'fa-solid fa-utensils', color: '#f97316' }
     ],
     souvenir: [
         { id: 'all', label: 'すべて' },
-        { id: 'castella', label: 'カステラ' },
-        { id: 'kakuni', label: '角煮まん・ぶたまん' },
-        { id: 'sweets', label: '和菓子・スイーツ' },
-        { id: 'others', label: 'その他' }
+        { id: 'castella', label: 'カステラ', icon: 'fa-solid fa-shop', color: '#eab308' },
+        { id: 'kakuni', label: '角煮まん・ぶたまん', icon: 'fa-solid fa-gift', color: '#CF5376' },
+        { id: 'sweets', label: '和菓子・スイーツ', icon: 'fa-solid fa-cake-candles', color: '#eab308' },
+        { id: 'others', label: 'その他', icon: 'fa-solid fa-gift', color: '#CF5376' }
+    ],
+    sightseeing: [
+        { id: 'all', label: 'すべて' },
+        { id: 'history', label: '歴史・史跡', icon: 'fa-solid fa-scroll', color: '#92400e' },
+        { id: 'church', label: '教会・祈り', icon: 'fa-solid fa-church', color: '#7e22ce' },
+        { id: 'peace', label: '平和・原爆', icon: 'fa-solid fa-dove', color: '#3b82f6' },
+        { id: 'view', label: '夜景・景観', icon: 'fa-solid fa-mountain-city', color: '#1e1b4b' },
+        { id: 'nature', label: '自然・公園', icon: 'fa-solid fa-anchor', color: '#06b6d4' },
+        { id: 'chinese', label: '和華蘭・中華', icon: 'fa-solid fa-fire-flame-curved', color: '#ef4444' },
+        { id: 'others', label: 'その他', icon: 'fa-solid fa-camera', color: '#FF8559' }
     ]
 };
 let favoriteIds = JSON.parse(localStorage.getItem('nagasaki-map-favorites') || '[]');
@@ -76,16 +141,14 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
 let markerLayer = L.layerGroup().addTo(map);
 let markers = {};
 
-function createIcon(cat, active) {
-    const config = categoryConfig[cat] || categoryConfig.all;
-    const color = config.color;
-    const shapeClass = config.shape || 'shape-circle';
+function createIcon(spot, active) {
+    const { icon, color } = getSpotConfig(spot);
     
     return L.divIcon({
         className: 'custom-marker',
-        html: `<div class="marker-base ${shapeClass} ${active ? 'active' : ''}" style="background-color: ${color};"></div>`,
-        iconSize: [26, 26],
-        iconAnchor: [13, 13]
+        html: `<div class="marker-base ${active ? 'active' : ''}" style="background-color: ${color};"><i class="${icon}"></i></div>`,
+        iconSize: [30, 30],
+        iconAnchor: [15, 15]
     });
 }
 
@@ -109,7 +172,7 @@ function displaySpots(catFilter = 'all', subCatFilter = 'all') {
         if (subCatFilter === 'all') {
             matchSub = true;
         } else if (subCatFilter === 'others') {
-            matchSub = !spot.subcategory || spot.subcategory === '';
+            matchSub = !spot.subcategory || spot.subcategory === '' || spot.subcategory === 'others';
         } else {
             matchSub = spot.subcategory === subCatFilter;
         }
@@ -117,7 +180,7 @@ function displaySpots(catFilter = 'all', subCatFilter = 'all') {
         if (matchCat && matchSub) {
             // マーカー作成
             const marker = L.marker([spot.lat, spot.lng], {
-                icon: createIcon(spot.category, false)
+                icon: createIcon(spot, false)
             }).addTo(markerLayer);
             
             markers[spot.id] = marker;
@@ -133,6 +196,7 @@ function displaySpots(catFilter = 'all', subCatFilter = 'all') {
             
             const isFavorite = favoriteIds.includes(spot.id);
             const heartColor = isFavorite ? '#e74c3c' : 'none';
+            const { color: spotColor } = getSpotConfig(spot);
             
             let subCatLabel = '';
             if (spot.subcategory && subCategoryConfigs[spot.category]) {
@@ -150,7 +214,7 @@ function displaySpots(catFilter = 'all', subCatFilter = 'all') {
 
             card.innerHTML = `
                 <div class="card-tag-container">
-                    <div class="card-category" style="background:${categoryConfig[spot.category].color}">${categoryConfig[spot.category].label}</div>
+                    <div class="card-category" style="background:${spotColor}">${categoryConfig[spot.category].label}</div>
                     ${subCatBadge}
                 </div>
                 <div class="card-title">${spot.name}</div>
@@ -243,7 +307,7 @@ function focusSpot(id) {
     document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
     Object.keys(markers).forEach(k => {
         const s = spots.find(sp => sp.id == k);
-        markers[k].setIcon(createIcon(s.category, k == id));
+        markers[k].setIcon(createIcon(s, k == id));
         if (k == id) markers[k].setZIndexOffset(1000);
         else markers[k].setZIndexOffset(0);
     });
