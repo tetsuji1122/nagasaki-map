@@ -61,34 +61,36 @@ function getSpotConfig(spot) {
     return { icon, color };
 }
 
-const subCategoryConfigs = {
-    food: [
-        { id: 'all', label: 'すべて' },
-        { id: 'champon', label: 'ちゃんぽん', icon: 'fa-solid fa-bowl-food', color: '#f97316' },
-        { id: 'cafe', label: 'レトロ喫茶', icon: 'fa-solid fa-mug-hot', color: '#f97316' },
-        { id: 'turkish', label: 'トルコライス', icon: 'fa-solid fa-utensils', color: '#f97316' },
-        { id: 'ramen', label: 'ラーメン', icon: 'fa-solid fa-bowl-rice', color: '#f97316' },
-        { id: 'others', label: 'その他', icon: 'fa-solid fa-utensils', color: '#f97316' }
-    ],
-    souvenir: [
-        { id: 'all', label: 'すべて' },
-        { id: 'castella', label: 'カステラ', icon: 'fa-solid fa-shop', color: '#eab308' },
-        { id: 'kakuni', label: '角煮まん・ぶたまん', icon: 'fa-solid fa-gift', color: '#CF5376' },
-        { id: 'sweets', label: '和菓子・スイーツ', icon: 'fa-solid fa-cake-candles', color: '#eab308' },
-        { id: 'others', label: 'その他', icon: 'fa-solid fa-gift', color: '#CF5376' }
-    ],
-    sightseeing: [
-        { id: 'all', label: 'すべて' },
-        { id: 'history', label: '歴史・史跡', icon: 'fa-solid fa-scroll', color: '#92400e' },
-        { id: 'church', label: '教会・祈り', icon: 'fa-solid fa-church', color: '#7e22ce' },
-        { id: 'peace', label: '平和・原爆', icon: 'fa-solid fa-dove', color: '#3b82f6' },
-        { id: 'view', label: '夜景・景観', icon: 'fa-solid fa-mountain-city', color: '#1e1b4b' },
-        { id: 'nature', label: '自然・公園', icon: 'fa-solid fa-anchor', color: '#06b6d4' },
-        { id: 'chinese', label: '和華蘭・中華', icon: 'fa-solid fa-fire-flame-curved', color: '#ef4444' },
-        { id: 'others', label: 'その他', icon: 'fa-solid fa-camera', color: '#FF8559' }
-    ]
-};
-let favoriteIds = JSON.parse(localStorage.getItem('nagasaki-map-favorites') || '[]');
+// サブカテゴリー設定が config.js で定義されていない場合のフォールバック
+if (typeof subCategoryConfigs === 'undefined') {
+    window.subCategoryConfigs = {};
+}
+// MAP_CONFIG からHTML要素に値を反映
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof MAP_CONFIG === 'undefined') return;
+
+    // メタデータ・タイトルの適用
+    document.title = MAP_CONFIG.appTitle;
+    document.getElementById('meta-title').textContent = MAP_CONFIG.appTitle;
+    document.getElementById('meta-description').setAttribute('content', MAP_CONFIG.metaDescription);
+    document.getElementById('og-title').setAttribute('content', MAP_CONFIG.appTitle);
+    document.getElementById('og-description').setAttribute('content', MAP_CONFIG.metaDescription);
+    document.getElementById('og-url').setAttribute('content', MAP_CONFIG.ogpUrl);
+    document.getElementById('og-image').setAttribute('content', MAP_CONFIG.ogpImage);
+    document.getElementById('og-site-name').setAttribute('content', MAP_CONFIG.appTitle);
+
+    // ランディングページ・ヘッダーテキストの適用
+    document.getElementById('landing-title-text').innerHTML = MAP_CONFIG.appSubtitle;
+    document.getElementById('landing-subtitle-text').textContent = MAP_CONFIG.eventSubtitle;
+    document.getElementById('landing-event-link').href = MAP_CONFIG.eventPageUrl;
+    document.getElementById('header-title-text').textContent = MAP_CONFIG.appTitle;
+    document.getElementById('header-event-link').href = MAP_CONFIG.eventPageUrl;
+});
+
+let favoriteIds = [];
+// MAP_CONFIGからお気に入りのストレージキーを取得して初期化
+const storageKey = typeof MAP_CONFIG !== 'undefined' ? MAP_CONFIG.storageKeyFavorites : 'nagasaki-map-favorites';
+favoriteIds = JSON.parse(localStorage.getItem(storageKey) || '[]');
 
 function toggleFavorite(id, event) {
     if (event) event.stopPropagation();
@@ -98,7 +100,7 @@ function toggleFavorite(id, event) {
     } else {
         favoriteIds.splice(index, 1);
     }
-    localStorage.setItem('nagasaki-map-favorites', JSON.stringify(favoriteIds));
+    localStorage.setItem(storageKey, JSON.stringify(favoriteIds));
     
     // UIを更新
     const heartBtns = document.querySelectorAll(`.heart-btn[data-id="${id}"]`);
@@ -123,7 +125,8 @@ let spots = [];
 
 async function loadSpots() {
     try {
-        const response = await fetch('data/spots.json');
+        const dataUrl = (typeof MAP_CONFIG !== 'undefined' && MAP_CONFIG.spotsDataUrl) ? MAP_CONFIG.spotsDataUrl : 'data/spots.json';
+        const response = await fetch(dataUrl);
         spots = await response.json();
         displaySpots();
     } catch (error) {
@@ -132,7 +135,10 @@ async function loadSpots() {
 }
 
 
-const map = L.map('map', { zoomControl: false }).setView([32.7448, 129.8737], 15);
+const defaultCenter = (typeof MAP_CONFIG !== 'undefined' && MAP_CONFIG.defaultCenter) ? MAP_CONFIG.defaultCenter : [32.7448, 129.8737];
+const defaultZoom = (typeof MAP_CONFIG !== 'undefined' && MAP_CONFIG.defaultZoom) ? MAP_CONFIG.defaultZoom : 15;
+
+const map = L.map('map', { zoomControl: false }).setView(defaultCenter, defaultZoom);
 
 L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>'
@@ -372,6 +378,7 @@ function enterMap() {
         map.invalidateSize();
     }, 1500);
 }
+window.enterMap = enterMap;
 
 
 let utilityStates = { aed: false, wifi: false };

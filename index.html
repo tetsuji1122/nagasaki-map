@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>UDC2026 中間シンポジウム＠長崎 おもてなしマップ</title>
-    <meta name="description" content="UDC2026 中間シンポジウム＠長崎の参加者のためのデジタルマップ。会場周辺のグルメ・観光・お土産情報を「形」と「明るさ」で分かりやすくお届けします。">
+    <title id="meta-title">UDC2026 中間シンポジウム＠長崎 おもてなしマップ</title>
+    <meta id="meta-description" name="description" content="UDC2026 中間シンポジウム＠長崎の参加者のためのデジタルマップ。会場周辺のグルメ・観光・お土産情報を「形」と「明るさ」で分かりやすくお届けします。">
     <!-- OGP -->
-    <meta property="og:title" content="UDC2026 中間シンポジウム＠長崎 おもてなしマップ">
-    <meta property="og:description" content="長崎の地域データとオープンデータの未来を考える。シンポジウム会場周辺のおすすめスポットを快適に探索できるスマホ特化型マップです。">
+    <meta id="og-title" property="og:title" content="UDC2026 中間シンポジウム＠長崎 おもてなしマップ">
+    <meta id="og-description" property="og:description" content="長崎の地域データとオープンデータの未来を考える。シンポジウム会場周辺のおすすめスポットを快適に探索できるスマホ特化型マップです。">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tetsuji1122.github.io/nagasaki-map/"> <!-- 実際のURLに合わせて変更してください -->
-    <meta property="og:image" content="https://tetsuji1122.github.io/nagasaki-map/img/ogp.png"> <!-- プレビュー画像 -->
-    <meta property="og:site_name" content="UDC2026 長崎おもてなしマップ">
+    <meta id="og-url" property="og:url" content="https://tetsuji1122.github.io/nagasaki-map/"> <!-- 実際のURLに合わせて変更してください -->
+    <meta id="og-image" property="og:image" content="https://tetsuji1122.github.io/nagasaki-map/img/ogp.png"> <!-- プレビュー画像 -->
+    <meta id="og-site-name" property="og:site_name" content="UDC2026 長崎おもてなしマップ">
     <meta property="og:locale" content="ja_JP">
 
     <!-- Fonts -->
@@ -43,11 +43,11 @@
             <div class="slide" style="background-image: url('img/photo12s.jpg');"></div>
         </div>
         <div class="landing-content">
-            <div class="landing-title">長崎から考える、<br>地域データとオープンデータの未来</div>
-            <div class="landing-subtitle">アーバンデータチャレンジ 2026 中間シンポジウム</div>
+            <div class="landing-title" id="landing-title-text">長崎から考える、<br>地域データとオープンデータの未来</div>
+            <div class="landing-subtitle" id="landing-subtitle-text">アーバンデータチャレンジ 2026 中間シンポジウム</div>
             <div class="landing-actions">
                 <button class="enter-btn" onclick="enterMap()">マップを見る</button>
-                <a href="https://udc2026-2nd-symposium.peatix.com/" target="_blank" class="register-btn">イベントページ</a>
+                <a id="landing-event-link" href="https://udc2026-2nd-symposium.peatix.com/" target="_blank" class="register-btn">イベントページ</a>
             </div>
         </div>
         <div class="landing-footer">
@@ -56,8 +56,8 @@
     </div>
 
     <header>
-        <h1>UDC2026 中間シンポジウム＠長崎 おもてなしマップ</h1>
-        <a href="https://udc2026-2nd-symposium.peatix.com/" target="_blank" class="header-link">イベントページ</a>
+        <h1 id="header-title-text">UDC2026 中間シンポジウム＠長崎 おもてなしマップ</h1>
+        <a id="header-event-link" href="https://udc2026-2nd-symposium.peatix.com/" target="_blank" class="header-link">イベントページ</a>
     </header>
 
     <!-- カテゴリフィルター -->
@@ -98,6 +98,8 @@
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Config Script -->
+    <script src="js/config.js"></script>
     <!-- Custom Script -->
     <script src="js/script.js"></script>
 </body>
