@@ -553,7 +553,7 @@ header h1 {
 
 
 
-/* 萓ｿ蛻ｩ繝ｻ螳牙ｿ�繝ｬ繧､繝､繝ｼ */
+/* 萓ｿ蛻ｩ繝ｻ螳牙ｿ・Ξ繧､繝､繝ｼ */
 .utility-container {
     position: absolute;
     top: 140px;
@@ -586,7 +586,40 @@ header h1 {
 .utility-btn.active.wifi { background: #2563eb; color: white; border-color: #2563eb; }
 .utility-btn:hover { border-color: #aaa; }
 
-/* 萓ｿ蛻ｩ繝ｻ螳牙ｿ�繝ｬ繧､繝､繝ｼ */
+/* 萓ｿ蛻ｩ繝ｻ螳牙ｿ・Ξ繧､繝､繝ｼ */
+.utility-container {
+    position: absolute;
+    top: 140px;
+    right: 16px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+}
+.utility-btn {
+    width: 44px;
+    height: 44px;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #5d6d7e;
+    transition: all 0.2s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    pointer-events: auto;
+}
+.utility-btn.active.aed { background: #e11d48 !important; color: white !important; border-color: #e11d48 !important; }
+.utility-btn.active.wifi { background: #2563eb !important; color: white !important; border-color: #2563eb !important; }
+.utility-btn:hover { border-color: #aaa; }
+
+/* 便利・安心レイヤー */
 .utility-container {
     position: absolute;
     top: 140px;
