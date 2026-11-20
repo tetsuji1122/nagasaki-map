@@ -28,22 +28,28 @@ header {
     .utility-filter {
         display: flex;
         justify-content: center;
-        gap: 10px;
-        margin-bottom: 10px;
+        padding: 10px 12px;
+        gap: 8px;
+        background: var(--bg-color);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
     }
     .utility-btn {
         background: white;
-        border: 2px solid #ddd;
-        border-radius: 20px;
-        padding: 5px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 6px 16px;
         font-size: 0.8rem;
+        font-weight: 600;
         cursor: pointer;
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 6px;
+        color: #5d6d7e;
+        transition: all 0.2s;
     }
     .utility-btn.active.aed { background: #e11d48; color: white; border-color: #e11d48; }
     .utility-btn.active.wifi { background: #2563eb; color: white; border-color: #2563eb; }
+    .utility-btn:hover { border-color: #aaa; }
 
     z-index: 1100;
     position: relative;
