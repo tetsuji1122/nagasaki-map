@@ -373,3 +373,41 @@ function enterMap() {
     }, 1500);
 }
 
+
+let utilityStates = { aed: false, wifi: false };
+let utilityMarkers = { aed: [], wifi: [] };
+let aedData = [], wifiData = [];
+
+async function loadUtilityData() {
+    [aedData, wifiData] = await Promise.all([
+        fetch('data/aed.json').then(res => res.json()),
+        fetch('data/wifi.json').then(res => res.json())
+    ]);
+}
+loadUtilityData();
+
+function toggleUtility(type) {
+    utilityStates[type] = !utilityStates[type];
+    const btn = document.querySelector(`.utility-btn[onclick="toggleUtility('${type}')"]`);
+    btn.classList.toggle('active');
+    btn.classList.toggle(type);
+
+    if (utilityStates[type]) {
+        const data = (type === 'aed' ? aedData : wifiData);
+        data.forEach(spot => {
+            const icon = L.divIcon({
+                className: 'custom-icon',
+                html: `<div style="background:${type === 'aed' ? '#e11d48' : '#2563eb'}; width:30px; height:30px; border-radius:50% 50% 0 50%; transform:rotate(-45deg); display:flex; align-items:center; justify-content:center; color:white; font-size:14px;"><i class="${type === 'aed' ? 'fa-solid fa-heart' : 'fa-solid fa-wifi'}"></i></div>`,
+                iconSize: [30, 30],
+                iconAnchor: [15, 30]
+            });
+            const marker = L.marker([spot.lat, spot.lng], { icon }).addTo(map);
+            marker.bindPopup(`<b>${type === 'aed' ? 'AED' : 'Wi-Fi'}: ${spot.name}</b><br>${spot.address}`);
+            utilityMarkers[type].push(marker);
+        });
+    } else {
+        utilityMarkers[type].forEach(m => map.removeLayer(m));
+        utilityMarkers[type] = [];
+    }
+}
+

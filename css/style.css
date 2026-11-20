@@ -24,6 +24,27 @@ header {
     color: white;
     padding: 12px 20px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* 便利・安心レイヤー */
+    .utility-filter {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    .utility-btn {
+        background: white;
+        border: 2px solid #ddd;
+        border-radius: 20px;
+        padding: 5px 15px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .utility-btn.active.aed { background: #e11d48; color: white; border-color: #e11d48; }
+    .utility-btn.active.wifi { background: #2563eb; color: white; border-color: #2563eb; }
+
     z-index: 1100;
     position: relative;
     display: flex;
