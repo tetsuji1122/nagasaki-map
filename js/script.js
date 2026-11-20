@@ -244,18 +244,18 @@ function displaySpots(catFilter = 'all', subCatFilter = 'all') {
 
 function renderSubFilters(cat) {
     const container = document.getElementById('sub-filter-container');
-    const locateBtn = document.querySelector('.locate-btn');
+    const mapControls = document.querySelector('.map-controls');
     const configs = subCategoryConfigs[cat];
 
     if (!configs) {
         container.classList.add('hidden');
         container.innerHTML = '';
-        if (locateBtn) locateBtn.classList.remove('shifted');
+        if (mapControls) mapControls.classList.remove('shifted');
         return;
     }
 
     container.classList.remove('hidden');
-    if (locateBtn) locateBtn.classList.add('shifted');
+    if (mapControls) mapControls.classList.add('shifted');
     container.innerHTML = '';
     
     configs.forEach(sub => {

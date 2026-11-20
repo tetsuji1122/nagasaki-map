@@ -53,14 +53,6 @@
         <div class="landing-footer">
             Landscape photos provided by <a href="https://find47.jp/" target="_blank">FIND/47</a> under <a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">CC BY 4.0</a>
         </div>
-        <div class="landing-footer">
-            AED設置箇所一覧（長崎市内の公共施設）・公衆無線LANアクセスポイント一覧（長崎市）：長崎市（BODIK ODCS）、CC BY 4.0<br>
-            無線LANデータは2020年9月時点のものです<br>
-            AED・Wi-Fiの位置は、住所をもとに国土地理院の住所検索で取得した座標です<br>
-            <br>
-            Landscape photos provided by <a href="https://find47.jp/" target="_blank">FIND/47</a> under <a href="https://creativecommons.org/licenses/by/4.0/deed.ja" target="_blank">CC BY 4.0</a>
-        </div>
-
     </div>
 
     <header>
@@ -81,12 +73,6 @@
             </svg>お気に入り
         </button>
     </div>
-    <!-- 便利・安心レイヤー -->
-    <div class="utility-container">
-        <button class="utility-btn" onclick="toggleUtility('aed')">AED</button>
-        <button class="utility-btn" onclick="toggleUtility('wifi')">Wi-Fi</button>
-    </div>
-
 
     <!-- サブカテゴリフィルター -->
     <div id="sub-filter-container" class="hidden">
@@ -96,12 +82,16 @@
     <!-- マップエリア -->
     <div id="map"></div>
 
-    <!-- 現在地ボタン -->
-    <button class="locate-btn" onclick="locateUser()" title="現在地を表示">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#3498db">
-            <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
-        </svg>
-    </button>
+    <!-- マップコントロール（現在地、AED、Wi-Fi） -->
+    <div class="map-controls">
+        <button class="control-btn locate-btn" onclick="locateUser()" title="現在地を表示">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#3498db">
+                <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+            </svg>
+        </button>
+        <button class="control-btn utility-btn" onclick="toggleUtility('aed')" title="AED設置場所を表示">AED</button>
+        <button class="control-btn utility-btn" onclick="toggleUtility('wifi')" title="公衆無線LANを表示">Wi-Fi</button>
+    </div>
 
     <!-- スポットカルーセル -->
     <div id="carousel"></div>
