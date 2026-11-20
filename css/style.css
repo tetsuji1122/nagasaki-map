@@ -134,7 +134,7 @@ header h1 {
     background: #f8f9fa;
 }
 
-/* Leaflet クレジットの位置調整 */
+/* Leaflet クレジチE��の位置調整 */
 .leaflet-bottom.leaflet-right {
     bottom: 10px !important;
     transition: bottom 0.3s ease;
@@ -148,7 +148,7 @@ header h1 {
     width: 100%;
     display: flex;
     overflow-x: auto;
-    padding: 15px 0 25px 0; /* 左右のパディングを0にする */
+    padding: 15px 0 25px 0; /* 左右のパディングめEにする */
     gap: 16px;
     z-index: 1000;
     scroll-behavior: smooth;
@@ -176,7 +176,7 @@ header h1 {
     scroll-snap-align: center;
 }
 
-/* 最初と最後のカードに画面中央に寄せるための余白を追加 */
+/* 最初と最後�Eカードに画面中央に寁E��るため�E余白を追加 */
 .card:first-child {
     margin-left: calc(50% - 140px);
 }
@@ -280,7 +280,7 @@ header h1 {
     min-height: 3em;
 }
 
-/* マーカーベース設定 */
+/* マ�Eカーベ�Eス設宁E*/
 .custom-marker {
     background: none;
     border: none;
@@ -304,7 +304,7 @@ header h1 {
     font-size: 14px;
 }
 
-/* アクティブ（選択中）の演出 */
+/* アクチE��ブ（選択中�E��E演�E */
 .marker-base.active {
     width: 38px;
     height: 38px;
@@ -349,34 +349,56 @@ header h1 {
     border-color: #e74c3c;
 }
 
-.locate-btn {
+/* �}�b�v�R���g���[���i���ݒn�AAED�AWi-Fi�j */
+.map-controls {
     position: absolute;
     top: 140px;
     right: 16px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: top 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.map-controls.shifted {
+    top: 195px; /* �T�u�J�e�S���\�����̈ʒu�A�� */
+}
+
+.control-btn {
     width: 44px;
     height: 44px;
     background: var(--bg-color);
-    border-radius: 0;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #5d6d7e;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    z-index: 1000;
-    cursor: pointer;
-    border: 1px solid rgba(0,0,0,0.05);
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
 }
 
-.locate-btn.shifted {
-    top: 195px; /* サブカテゴリが表示されている時に下にずらす */
+.control-btn:active {
+    transform: scale(0.92);
 }
 
-.locate-btn:active {
-    transform: scale(0.9);
-    background: #C4D8DB;
+.control-btn.active.aed {
+    background: #e11d48;
+    color: white;
+    border-color: #e11d48;
 }
 
-/* ランディングページ */
+.control-btn.active.wifi {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+/* ランチE��ングペ�Eジ */
 #landing-page {
     position: fixed;
     top: 0;

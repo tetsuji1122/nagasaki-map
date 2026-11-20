@@ -38,13 +38,65 @@
 ├── css/
 │   └── style.css     # デザイン・パルスアニメーション・テーマカラー管理
 ├── js/
-│   └── script.js    # 地図制御・JSON取得・お気に入り管理・フィルタリング
+│   ├── config.js     # 地図設定・イベント情報・フォーク用設定ファイル
+│   └── script.js     # 地図制御・JSON取得・お気に入り管理・フィルタリング
 ├── data/
 │   └── spots.json    # スポットデータ（JSON形式）
 ├── img/
 │   └── photo01s.jpg~ # スライドショー用画像（計12枚）
 └── Readme.md         # 本ドキュメント
 ```
+
+## ⚙️ フォーク・他地域への流用方法（設定ファイル）
+`js/config.js` を編集することで、別の地域やイベント向けのマップとして簡単にフォーク（流用）できます。
+
+```javascript
+const MAP_CONFIG = {
+    // サイト・アプリのタイトル情報
+    appTitle: "UDC2026 中間シンポジウム＠長崎 おもてなしマップ",
+    appSubtitle: "長崎から考える、<br>地域データとオープンデータの未来",
+    eventSubtitle: "アーバンデータチャレンジ 2026 中間シンポジウム",
+    eventPageUrl: "https://udc2026-2nd-symposium.peatix.com/",
+    
+    // メタ情報 (OGP等)
+    metaDescription: "UDC2026 中間シンポジウム＠長崎の参加者のためのデジタルマップ...",
+    ogpUrl: "https://tetsuji1122.github.io/nagasaki-map/",
+    ogpImage: "https://tetsuji1122.github.io/nagasaki-map/img/ogp.png",
+
+    // 地図の初期表示設定 (中心座標とズームレベル)
+    defaultCenter: [32.7448, 129.8737],
+    defaultZoom: 15,
+
+    // お気に入り機能のローカルストレージキー (他のマップと競合しないよう固有のキーを指定)
+    storageKeyFavorites: "nagasaki-map-favorites",
+
+    // データソース設定
+    spotsDataUrl: "data/spots.json"
+};
+```
+
+### 🌍 他地域で使う手順（ステップバイステップ）
+
+別地域（例：〇〇市）のイベントやおもてなしマップとして本リポジトリを流用・展開する場合は、以下の手順に従って設定を行います。
+
+1. **リポジトリの複製・フォーク**
+   - 本リポジトリを GitHub 等でフォークするか、新規リポジトリとしてクローンします。
+
+2. **設定ファイルの書き換え (`js/config.js`)**
+   - `appTitle`, `appSubtitle`, `eventSubtitle`, `eventPageUrl` を開催するイベントや地域名に変更します。
+   - `defaultCenter` に新地域の中心座標 `[緯度, 経度]` を設定します。
+   - `storageKeyFavorites` に他のマップと競合しない固有のストレージキー名（例: `ooita-map-favorites`）を指定します。
+   - OGPタグやURL (`ogpUrl`, `ogpImage`, `metaDescription`) も適宜変更してください。
+   - 必要に応じて、ファイル下部の `subCategoryConfigs` でカテゴリーごとのサブカテゴリー項目、アイコン、カラーをカスタマイズできます。
+
+3. **スポットデータの置き換え (`data/spots.json`)**
+   - 開催地域の会場、グルメ、観光地、お土産などのスポット情報を `data/spots.json` に記述（または差し替え）します。
+
+4. **スライドショー画像の差し替え (`img/`)**
+   - ランディングページに表示される12枚の背景風景写真 (`photo01s.jpg` 〜 `photo12s.jpg`) を、対象地域の魅力的な写真に差し替えます（ファイル名は同一にするか、適宜コード側の配列を調整してください）。
+
+5. **公開・デプロイ**
+   - GitHub Pages や Netlify などの静的ホスティングサービスにデプロイすることで、即座にスマートフォン特化型デジタルマップとして公開・利用できます。
 
 ## 📝 データの更新方法
 `data/spots.json` を編集するだけで、簡単にスポット情報を管理できます。
@@ -65,6 +117,7 @@
 ## 🚀 運用上の特徴
 - **ポータビリティ**: サーバーサイドのデータベースを必要とせず、静的ファイルの配信のみで動作するため、GitHub Pages等で即座に公開可能です。
 - **オープンデータフレンドリー**: シンポジウムのテーマである「地域データ・オープンデータ」の利活用を体現した、シンプルで拡張性の高い構成。
+- **公共データ（AED・Wi-Fi）の活用**: BODIK ODCS（オープンデータシティサポート）等から提供される長崎市のAED設置場所データ (`data/aed.json`) および公衆無線LAN（Wi-Fi）スポットデータ (`data/wifi.json`) を活用し、防災・利便性向上のためのユーティリティレイヤーとして重ね合わせ表示可能。
 
 ## ⚖️ ライセンス・クレジット
 - **地図タイル**: &copy; OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team
