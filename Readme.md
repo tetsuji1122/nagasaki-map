@@ -123,3 +123,8 @@ const MAP_CONFIG = {
 - **地図タイル**: &copy; OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team
 - **風景写真**: [FIND/47](https://find47.jp/) (CC BY 4.0)
 - **アイコン**: [Lucide Icons](https://lucide.dev/) デザインを参考にしたSVGアイコン
+
+コード：MIT License（LICENSE ファイル参照）
+スポットデータ（data/spots.json）：CC BY 4.0（作者のオリジナルデータ）
+外部データ・素材の出典とライセンスは DATA_LICENSE.md にまとめています
+  （長崎市のAED・公衆無線LANデータ：CC BY 4.0／写真：FIND/47、CC BY 4.0／地図：© OpenStreetMap contributors、ODbL）
